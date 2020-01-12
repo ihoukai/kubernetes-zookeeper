@@ -11,7 +11,7 @@ When you create the resources in Kubernetes, it will create a 3-member (the mini
 To launch the cluster, have Kubernetes create all the resources in zookeeper.yaml:
 
 ```
-$ kubectl create -f redis-cluster.yaml
+$ kubectl create -f zookeeper.yaml
 configmap/zookeeper-sh created
 configmap/zookeeper-cfg created
 service/zk-hs created
@@ -32,6 +32,7 @@ zk-1   1/1     Running   0          21s
 zk-2   1/1     Running   0          21s
 ```
 
+and zookeeper status.
 ```
 $ for i in 0 1 2; do echo zk-$i; kubectl exec zk-$i -- sh -c 'echo stat|nc 127.0.0.1 2181'; done;
 zk-0
